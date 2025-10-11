@@ -1,0 +1,15 @@
+valgrind ./cub3D scenes/00_error_file_empty.cub
+valgrind ./cub3D scenes/01_error_file_wrong_extension.cud
+valgrind ./cub3D scenes/02_error_key_unknown.cub
+valgrind ./cub3D scenes/03_error_key_double.cub
+valgrind ./cub3D scenes/04_error_texture_invalid_path.cub
+valgrind ./cub3D scenes/05_error_texture_invalid_type.cub
+valgrind ./cub3D scenes/06_error_color_missing.cub
+valgrind ./cub3D scenes/07_error_color_invalid.cub
+valgrind ./cub3D scenes/08_error_map_content_after.cub
+valgrind ./cub3D scenes/09_error_map_empty_line.cub
+valgrind ./cub3D scenes/10_error_map_invalid_char.cub
+valgrind ./cub3D scenes/11_error_map_unclosed.cub
+valgrind ./cub3D scenes/12_error_player_wrog.cub
+valgrind ./cub3D scenes/13_error_player_duplicate.cub
+valgrind ./cub3D scenes/14_error_player_missing.cub
