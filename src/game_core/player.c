@@ -16,7 +16,7 @@
 
 static void	check_and_move(t_player *player, t_map *map, t_directions dir);
 static bool	set_pos(double *x, double *y, t_player *player, t_directions dir);
-static void	rotate_player(t_player *p, double r_speed);
+void	rotate_player(t_player *p, double r_speed);
 
 void	set_player(t_game *game)
 {
@@ -35,9 +35,13 @@ void	set_player(t_game *game)
 		player->angle = 0;
 	player->dir_x = cos(player->angle);
 	player->dir_y = sin(player->angle);
-	player->plane_x = -player->dir_y * 0.66;
-	player->plane_y = player->dir_x * 0.66;
+	player->fov_deg = 0.66;
+	set_fov(game, player->fov_deg);
+	//player->plane_x = -player->dir_y * 0.66;
+	//player->plane_y = player->dir_x * 0.66;
 }
+// set_fov for zoom instead of hardcoding 0.66
+
 
 void	move_player(t_game *game, t_directions dir)
 {
@@ -58,7 +62,7 @@ void	move_player(t_game *game, t_directions dir)
 		rotate_player(player, ROTATE_SPEED);
 	else
 		return ;
-	game->refresh_screen = True;
+	game->refresh_screen = true;
 }
 
 static void	check_and_move(t_player *player, t_map *map, t_directions dir)
@@ -103,7 +107,7 @@ static bool	set_pos(double *x, double *y, t_player *player, t_directions dir)
 	return (true);
 }
 
-static void	rotate_player(t_player *p, double r_speed)
+void	rotate_player(t_player *p, double r_speed)
 {
 	double	old_x;
 	double	old_y;

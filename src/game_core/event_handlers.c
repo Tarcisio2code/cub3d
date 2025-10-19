@@ -44,17 +44,17 @@ int	key_press(int key, t_game *game)
 static void	set_minimap_status(t_game *game)
 {
 	if (game->show_mini_map)
-		game->show_mini_map = False;
+		game->show_mini_map = false;
 	else
-		game->show_mini_map = True;
-	game->refresh_screen = True;
+		game->show_mini_map = true;
+	game->refresh_screen = true;
 }
 
 static void	set_help_screen_status(t_game *game)
 {
 	if (game->show_help_screen)
-		game->show_help_screen = False;
+		game->show_help_screen = false;
 	else
-		game->show_help_screen = True;
-	game->refresh_screen = True;
+		game->show_help_screen = true;
+	game->refresh_screen = true;
 }

@@ -28,5 +28,7 @@ void	draw_transparent_background(t_game *game, int x, int y, int color);
 void	draw_transparent_box(t_game *game, int s_x, int s_y, int color);
 void	render_game_over_screen(t_game *game);
 void	render_help_screen(t_game *game);
+void    floor_wall_point(t_ray *ray, double *wx, double *wy);
+void    render_floor_ceil_column(t_game *game, int x, int top, int bot);
 
 #endif

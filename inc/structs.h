@@ -47,6 +47,8 @@ typedef struct s_textures
 	t_image	door;
 	t_image	game_over;
 	t_image	help_screen;
+	t_image	floor;
+	t_image	ceiling;
 }				t_textures;
 
 typedef struct s_player
@@ -61,7 +63,7 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-
+	double	fov_deg;
 }				t_player;
 
 typedef struct s_ray
@@ -115,6 +117,8 @@ typedef struct s_game
 	bool		is_running;
 	bool		has_doors;
 	bool		game_over;
+	int			last_mouse_x;
+	bool		mouse_initted;
 	t_map		*map;
 	t_image		win_img;
 	t_player	player;
@@ -122,6 +126,16 @@ typedef struct s_game
 	t_ray		ray;
 	t_door		door;
 }				t_game;
+
+//player in tiles, wall base in tiles
+typedef struct s_floor_params
+{
+	double	px;
+	double	py;
+	double	bx;
+	double	by;
+	double	wall_dist_tiles;
+}			t_floor_params;
 
 typedef enum e_directions
 {

@@ -62,7 +62,7 @@ bool	validate_texture_file(char *filepath)
 	int	fd;
 
 	fd = check_file(filepath);
-	if (!fd)
+	if (fd < 0)
 		return (false);
 	close(fd);
 	return (true);

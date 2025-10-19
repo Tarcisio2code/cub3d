@@ -15,17 +15,32 @@
 
 static	void	validate_textures(t_game *game);
 
+static bool	has_full_color(int c[3])
+{
+	return ((c[0] >= 0 && c[0] <= 255)
+		&& (c[0] >= 0 && c[0] <= 255)
+		&& (c[0] >= 0 && c[0] <= 255));
+}
+
 void	validate_scene(t_game *game)
 {
+	bool	floor_has_color;
+	bool	ceil_has_color;
+	bool	floor_has_texpath;
+	bool	ceil_has_texpath;
+
 	validate_textures(game);
-	if (game->floor_color[0] < 0 || game->floor_color[0] > 255
-		|| game->floor_color[1] < 0 || game->floor_color[1] > 255 
-		|| game->floor_color[2] < 0 || game->floor_color[2] > 255)
-		exit_clean(ERR_RGB_COLOR, game);
-	if (game->ceiling_color[0] < 0 || game->ceiling_color[0] > 255
-		|| game->ceiling_color[1] < 0 || game->ceiling_color[1] > 255
-		|| game->ceiling_color[2] < 0 || game->ceiling_color[2] > 255)
-		exit_clean(ERR_RGB_COLOR, game);
+	floor_has_color = has_full_color(game->floor_color);
+	ceil_has_color = has_full_color(game->ceiling_color);
+	printf("Reached here\n");
+	floor_has_texpath = (game->textures.floor.path &&
+						validate_texture_file(game->textures.floor.path));
+	ceil_has_texpath = (game->textures.ceiling.path &&
+						validate_texture_file(game->textures.ceiling.path));
+	if (!floor_has_color && !floor_has_texpath)
+		exit_clean("error color or texture floor", game);
+	if (!ceil_has_color && !ceil_has_texpath)
+		exit_clean("error color or texture ceil", game);
 	validate_map(game);
 }
 

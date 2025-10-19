@@ -32,4 +32,4 @@ int	main(int argc, char **argv)
 //  • Aminimap system.							[ V ]
 //  • Doors which can open and close.			[ V ]
 //  • Animated sprites.							[ ? ]
-//  • Rotate the point of view with the mouse.  [   ]
+//  • Rotate the point of view with the mouse.  [ V ]

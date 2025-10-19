@@ -36,13 +36,15 @@ void	init_game_vars(char *filename, t_game *game)
 	game->has_doors = false;
 	game->door.frames = NULL;
 	game->door.exploding = false;
+	game->last_mouse_x = 0;
+	game->mouse_initted = false;
 }
 
 static void	init_map(t_game *game)
 {
 	game->map = malloc(sizeof(t_map));
 	if (!game->map)
-		exit_clean("ERR_MALLOC_MAP", NULL);
+		exit_clean("ERR_MALLOC_MAP", game);
 	game->map->data = NULL;
 	game->map->line = NULL;
 	game->map->height = 0;
@@ -61,7 +63,15 @@ static void	init_textures(t_game *game)
 	game->textures.east.path = NULL;
 	game->textures.west.path = NULL;
 	game->textures.help_screen.path = ft_strdup("./textures/help_screen.xpm");
+	if (!game->textures.help_screen.path)
+		exit_clean(ERR_MALLOC, game);
 	game->textures.game_over.path = ft_strdup("./textures/game_over.xpm");
+	if (!game->textures.game_over.path)
+		exit_clean(ERR_MALLOC, game);
 	game->textures.help_screen.img_ptr = NULL;
 	game->textures.game_over.img_ptr = NULL;
+	game->textures.floor.img_ptr = NULL;
+	game->textures.ceiling.img_ptr = NULL;
+	game->textures.floor.path = NULL;
+	game->textures.ceiling.path = NULL;
 }

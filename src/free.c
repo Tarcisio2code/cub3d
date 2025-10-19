@@ -14,12 +14,14 @@
 
 void	free_vars(t_game *game)
 {
-	if (game->map->data)
-		free_str_array(game->map->data);
-	if (game->map->line)
-		free(game->map->line);
 	if (game->map)
+	{
+		if (game->map->data)
+			free_str_array(game->map->data);
+		if (game->map->line)
+			free(game->map->line);
 		free(game->map);
+	}
 	free_textures(game);
 	free_doors(game);
 	if (game->mlx)
@@ -61,6 +63,14 @@ void	free_textures(t_game *game)
 		free(game->textures.help_screen.path);
 	if (game->textures.help_screen.img_ptr)
 		mlx_destroy_image(game->mlx, game->textures.help_screen.img_ptr);
+	if (game->textures.floor.path)
+		free(game->textures.floor.path);
+	if (game->textures.floor.img_ptr)
+		mlx_destroy_image(game->mlx, game->textures.floor.img_ptr);
+	if (game->textures.ceiling.path)
+		free(game->textures.ceiling.path);
+	if (game->textures.ceiling.img_ptr)
+		mlx_destroy_image(game->mlx, game->textures.ceiling.img_ptr);
 }
 
 void	free_str_array(char **str_array)

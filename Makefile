@@ -40,6 +40,7 @@ SRC =	cub3d.c \
 		game_core/player.c \
 		game_core/game_aux.c \
 		game_core/door.c \
+		game_core/mouse.c \
 		parser_and_validation/parser_map.c \
 		parser_and_validation/parser_scene.c \
 		parser_and_validation/parser_utils.c \
@@ -50,6 +51,7 @@ SRC =	cub3d.c \
 		rendering/3d_render.c \
 		rendering/raycaster.c \
 		rendering/3d_render_aux.c \
+		rendering/3d_render_aux_FC.c \
 		rendering/minimap.c \
 		rendering/transparent.c \
 		rendering/banner.c \
@@ -112,7 +114,7 @@ check_norm:
 	@norminette ${SRC_DIR}
 	@echo "${NO_COLOR}"
 
-.PHONY: all clean fclean re mandatory check_norm
+.PHONY: all clean fclean re check_norm
 
 # ---------- DEPENDENCES ----------
 -include $(DEPS)

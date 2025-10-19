@@ -22,6 +22,8 @@ void	start_game(t_game *game)
 	init_core(game);
 	mlx_hook(game->win, 17, 0, close_game, game);
 	mlx_hook(game->win, 2, 1L << 0, key_press, game);
+	mlx_hook(game->win, 6, 1L << 6, mouse_move, game);
+	mlx_hook(game->win, 4, 1L << 2, mouse_wheel, game);
 	mlx_mouse_hide(game->mlx, game->win);
 	mlx_loop_hook(game->mlx, loop_control, game);
 	mlx_loop(game->mlx);
@@ -53,7 +55,7 @@ static int	game_loop(t_game *game)
 		window_image = game->win_img.img_ptr;
 		mlx_put_image_to_window(game->mlx, game->win, window_image, 0, 0);
 		if (!game->game_over)
-			game->refresh_screen = False;
+			game->refresh_screen = false;
 	}
 	animate_door(game);
 	return (0);
@@ -72,7 +74,7 @@ static int	over_game_loop(t_game *game)
 		render_game_over_screen(game);
 		window_image = game->win_img.img_ptr;
 		mlx_put_image_to_window(game->mlx, game->win, window_image, 0, 0);
-		game->refresh_screen = False;
+		game->refresh_screen = false;
 	}
 	return (0);
 }

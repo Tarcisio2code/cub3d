@@ -16,7 +16,7 @@
 # include "../inc/cub3d.h"
 # include <math.h>
 
-# define WIN_TITLE "Wellcome to CUB3D"
+# define WIN_TITLE "Welcome to CUB3D"
 # define ERR_MLX "Failed to initialize the MLX library."
 # define ERR_MLX_WIN "Window creation failed."
 # define ERR_MLX_IMG_PTR "Image allocation failed."
@@ -32,6 +32,7 @@
 # define NUM_RAYS 60
 # define MINI_TILE_SIZE 10
 # define MINI_PLAYER_SIZE 4
+# define MOUSE_SENS 0.006
 
 # define GREEN 0xFF25D366
 # define BLUE 0xFF355685
@@ -44,6 +45,13 @@
 # define DARK_BLUE 0xFF00060B
 # define DARK_GRAY 0x5A5A5A
 # define DARK_RED 0x5A0000
+
+// FOV limits and step (degrees) for zoom
+# define FOV_MIN 30.0
+# define FOV_MAX 100.0
+# define FOV_STEP 5.0
+# define BTN_WHEEL_UP 4
+# define BTN_WHEEL_DOWN 5
 
 int		close_game(t_game *game);
 void	init_core(t_game *game);
@@ -58,5 +66,9 @@ void	set_texture_img(t_game *game, t_image *texture);
 void	init_door(t_game *game);
 void	change_door_state(t_game *game);
 void	animate_door(t_game *game);
+void	rotate_player(t_player *p, double r_speed);
+int 	mouse_move(int x, int y, t_game *game);
+void    set_fov(t_game *game, double fov_deg);
+int     mouse_wheel(int button, int x, int y, t_game *game);
 
 #endif

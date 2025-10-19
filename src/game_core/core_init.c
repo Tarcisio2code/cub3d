@@ -28,10 +28,10 @@ void	init_core(t_game *game)
 	set_player(game);
 	load_textures(game);
 	init_door(game);
-	game->refresh_screen = True;
-	game->show_help_screen = True;
+	game->refresh_screen = true;
+	game->show_help_screen = true;
 	game->is_running = true;
-	game->show_mini_map = False;
+	game->show_mini_map = false;
 	game->map->mini_x = WIN_WIDTH - (game->map->width * MINI_TILE_SIZE) - 10;
 	game->map->mini_y = 10;
 	game->game_over = false;

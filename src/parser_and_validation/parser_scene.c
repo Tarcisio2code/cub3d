@@ -41,6 +41,7 @@ static void	parse_identifier(t_game *game)
 				exit_clean(ERR_MALLOC, game);
 			if (tokens[0])
 			{
+				printf("Reached parse identifier colors\n");
 				if (ft_strncmp(tokens[0], "F", 2) == 0 
 					|| ft_strncmp(tokens[0], "C", 2) == 0)
 					parse_colors(game, tokens);
@@ -61,16 +62,48 @@ static void	parse_textures(t_game *game, char **tokens)
 	texture = &game->textures;
 	if (ft_strncmp(tokens[0], "NO", 3) == 0 && tokens[1]
 		&& !texture->north.path)
+	{
 		texture->north.path = ft_strdup(tokens[1]);
+		if (!texture->north.path)
+			exit_clean(ERR_MALLOC, game);
+	}
 	else if (ft_strncmp(tokens[0], "SO", 3) == 0 && tokens[1] 
 		&& !texture->south.path)
+	{
 		texture->south.path = ft_strdup(tokens[1]);
+		if (!texture->south.path)
+			exit_clean(ERR_MALLOC, game);
+	}
 	else if (ft_strncmp(tokens[0], "EA", 3) == 0 && tokens[1] 
 		&& !texture->east.path)
+	{
 		texture->east.path = ft_strdup(tokens[1]);
+		if (!texture->east.path)
+			exit_clean(ERR_MALLOC, game);
+	}
 	else if (ft_strncmp(tokens[0], "WE", 3) == 0 && tokens[1] 
 		&& !texture->west.path)
+	{
 		texture->west.path = ft_strdup(tokens[1]);
+		if (!texture->west.path)
+			exit_clean(ERR_MALLOC, game);
+	}
+	else if (ft_strncmp(tokens[0], "TF", 3) == 0 && tokens[1] 
+		&& !texture->floor.path)
+	{
+		texture->floor.path = ft_strdup(tokens[1]);
+		printf("floor texture asigned\n");
+		if (!texture->floor.path)
+			exit_clean(ERR_MALLOC, game);
+	}	
+	else if (ft_strncmp(tokens[0], "TC", 3) == 0 && tokens[1] 
+		&& !texture->ceiling.path)
+	{
+		texture->ceiling.path = ft_strdup(tokens[1]);
+		printf("ceiling texture asigned\n");
+		if (!texture->ceiling.path)
+			exit_clean(ERR_MALLOC, game);
+	}	
 	else
 		return (free_str_array(tokens), exit_clean(ERR_SCENE_DUP, game));
 }

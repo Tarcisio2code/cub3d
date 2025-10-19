@@ -41,6 +41,10 @@ void	load_textures(t_game *game)
 	set_texture_img(game, &game->textures.west);
 	set_texture_img(game, &game->textures.game_over);
 	set_texture_img(game, &game->textures.help_screen);
+	if (game->textures.floor.path)
+		set_texture_img(game, &game->textures.floor);
+	if (game->textures.ceiling.path)
+		set_texture_img(game, &game->textures.ceiling);
 }
 
 void	set_texture_img(t_game *game, t_image *texture)

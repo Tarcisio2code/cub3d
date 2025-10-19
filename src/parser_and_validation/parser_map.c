@@ -19,8 +19,10 @@ void	parse_map(t_game *game)
 {
 	if (!game->map->line)
 		exit_clean(ERR_MAP_ABSENT, game);
+	game->map->line = trim_newline(game->map->line);
 	while (game->map->line && is_map_line(game->map->line))
 	{
+		printf("map lines: %s\n", game->map->line);
 		parse_map_line(game, ft_strlen(game->map->line));
 		free(game->map->line);
 		game->map->line = trim_newline(get_next_line(game->scene_file));
@@ -49,7 +51,7 @@ static void	parse_map_line(t_game *game, int line_size)
 		i++;
 	}
 	new_map[i++] = ft_strdup(game->map->line);
-	if (!new_map)
+	if (!new_map[i - 1])
 		exit_clean(ERR_MALLOC, game);
 	new_map[i] = NULL;
 	if (game->map->data)

@@ -28,7 +28,7 @@ void	exit_clean(char *error_msg, t_game *game)
 	if (game)
 	{
 		free_vars(game);
-		if (game->scene_file > 0)
+		if (game->scene_file >= 0)
 			close(game->scene_file);
 	}
 	exit(exit_status);
@@ -36,7 +36,7 @@ void	exit_clean(char *error_msg, t_game *game)
 
 void	check_entry(char *scene_name, int argc)
 {
-	int	name_len;
+	size_t	name_len;
 
 	if (argc != 2)
 		exit_clean(ERR_ARG, 0);

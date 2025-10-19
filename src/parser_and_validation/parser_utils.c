@@ -17,8 +17,10 @@ char	*trim_newline(char *line)
 {
 	size_t	len;
 
+	if (!line)
+		return (NULL);
 	len = ft_strlen(line);
-	if (len > 0 && line[len -1] == '\n')
+	if (len > 0 && (line[len -1] == '\n' || line[len - 1] == '\r'))
 		line[len - 1] = '\0';
 	return (line);
 }
@@ -27,6 +29,8 @@ bool	is_empty_line(char *line)
 {
 	int	i;
 
+	if (!line)
+		return (true);
 	i = -1;
 	while (line[++i])
 	{
@@ -67,6 +71,8 @@ int	get_color(const char *str)
 {
 	int	n;
 
+	if (!str)
+		return (-1);
 	n = -1;
 	while (str[++n])
 		if (str[n] < 48 || str[n] > 57)
