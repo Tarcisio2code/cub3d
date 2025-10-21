@@ -14,7 +14,6 @@
 # define CUB3D_H
 
 # include <sys/types.h>
-# include <sys/stat.h>
 # include <sys/time.h>
 # include <fcntl.h>
 # include <errno.h>

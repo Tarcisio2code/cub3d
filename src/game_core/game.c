@@ -6,7 +6,7 @@
 /*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 20:06:27 by tsilva            #+#    #+#             */
-/*   Updated: 2025/09/25 15:02:42 by tsilva           ###   ########.fr       */
+/*   Updated: 2025/10/21 17:35:31 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static int	loop_control(t_game *game);
 static int	game_loop(t_game *game);
-static int	over_game_loop(t_game *game);
+static int	game_over_loop(t_game *game);
 
 void	start_game(t_game *game)
 {
@@ -34,7 +34,7 @@ static int	loop_control(t_game *game)
 	if (!game->game_over)
 		game_loop(game);
 	else
-		over_game_loop(game);
+		game_over_loop(game);
 	return (0);
 }
 
@@ -59,7 +59,7 @@ static int	game_loop(t_game *game)
 	return (0);
 }
 
-static int	over_game_loop(t_game *game)
+static int	game_over_loop(t_game *game)
 {
 	void	*window_image;
 

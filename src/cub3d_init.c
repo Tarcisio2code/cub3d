@@ -6,7 +6,7 @@
 /*   By: tsilva <tsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 17:14:30 by tsilva            #+#    #+#             */
-/*   Updated: 2025/09/29 18:09:31 by tsilva           ###   ########.fr       */
+/*   Updated: 2025/10/20 11:48:44 by tsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static void	init_textures(t_game *game)
 	game->textures.west.path = NULL;
 	game->textures.help_screen.path = ft_strdup("./textures/help_screen.xpm");
 	game->textures.game_over.path = ft_strdup("./textures/game_over.xpm");
+	if (!game->textures.help_screen.path || !game->textures.game_over.path)
+		exit_clean(ERR_MALLOC, game);
 	game->textures.help_screen.img_ptr = NULL;
 	game->textures.game_over.img_ptr = NULL;
 }
